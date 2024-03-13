@@ -25,7 +25,6 @@ public class Movie implements Serializable {
 	private Long id;
 	private String title;
 	private String subTitle;
-	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
 	private Integer year;
 	private String imgUrl;
 	@Column(columnDefinition = "TEXT")
