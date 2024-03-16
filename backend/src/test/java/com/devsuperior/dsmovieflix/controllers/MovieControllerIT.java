@@ -100,7 +100,46 @@ public class MovieControllerIT {
 		result.andExpect(jsonPath("$.genre.id").isNotEmpty());
 		result.andExpect(jsonPath("$.genre.name").isNotEmpty());
 	}
+	
+////
+	@Test
+	public void findReviewByMovieIdShouldReturnReviewDTOWhenUserVisitorAuthenticated() throws Exception {
 
+		String accessToken = tokenUtil.obtainAccessToken(mockMvc, visitorUsername, visitorPassword);
+		
+		ResultActions result =
+				mockMvc.perform(get("/movies/{id}/reviews", existingId)
+					.header("Authorization", "Bearer " + accessToken)
+					.contentType(MediaType.APPLICATION_JSON));
+
+		result.andExpect(status().isOk());
+		result.andExpect(jsonPath("$.[0].id").value(existingId));
+		result.andExpect(jsonPath("$.[0].text").isNotEmpty());
+		result.andExpect(jsonPath("$.[0].movieId").isNotEmpty());
+		result.andExpect(jsonPath("$.[0].user.id").value(existingId));
+		result.andExpect(jsonPath("$.[0].user.name").isNotEmpty());
+		result.andExpect(jsonPath("$.[0].user.email").isNotEmpty());
+	}
+	
+	@Test
+	public void findReviewByMovieIdShouldReturnReviewDTOWhenUserMemberAuthenticated() throws Exception {
+
+		String accessToken = tokenUtil.obtainAccessToken(mockMvc, memberUsername, memberPassword);
+		
+		ResultActions result =
+				mockMvc.perform(get("/movies/{id}/reviews", existingId)
+					.header("Authorization", "Bearer " + accessToken)
+					.contentType(MediaType.APPLICATION_JSON));
+
+		result.andExpect(status().isOk());
+		result.andExpect(jsonPath("$.[0].id").value(existingId));
+		result.andExpect(jsonPath("$.[0].text").isNotEmpty());
+		result.andExpect(jsonPath("$.[0].movieId").isNotEmpty());
+		result.andExpect(jsonPath("$.[0].user.id").value(existingId));
+		result.andExpect(jsonPath("$.[0].user.name").isNotEmpty());
+		result.andExpect(jsonPath("$.[0].user.email").isNotEmpty());
+	}
+////
 	@Test
 	public void findByIdShouldReturnNotFoundWhenIdDoesNotExist() throws Exception {
 
