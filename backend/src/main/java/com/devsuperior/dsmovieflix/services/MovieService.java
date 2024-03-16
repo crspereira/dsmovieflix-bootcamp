@@ -5,13 +5,18 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.devsuperior.dsmovieflix.dto.MovieDTO;
+import com.devsuperior.dsmovieflix.dto.MovieDTOByGenre;
 import com.devsuperior.dsmovieflix.dto.ReviewDTO;
+import com.devsuperior.dsmovieflix.entities.Genre;
 import com.devsuperior.dsmovieflix.entities.Movie;
 import com.devsuperior.dsmovieflix.entities.Review;
+import com.devsuperior.dsmovieflix.repositories.GenreRepository;
 import com.devsuperior.dsmovieflix.repositories.MovieRepository;
 import com.devsuperior.dsmovieflix.repositories.ReviewRepository;
 import com.devsuperior.dsmovieflix.services.execeptions.ResourceNotFoundException;
@@ -23,6 +28,9 @@ public class MovieService {
 	private MovieRepository repository;
 	
 	@Autowired
+	private GenreRepository genreRepository;
+	
+	@Autowired
 	private ReviewRepository reviewRepository;
 	
 	@Transactional(readOnly = true)
@@ -30,6 +38,13 @@ public class MovieService {
 		Optional<Movie> obj = repository.findById(id);
 		Movie entity = obj.orElseThrow(() -> new ResourceNotFoundException("Entity not Found"));
 		return new MovieDTO(entity);
+	}
+	
+	@Transactional(readOnly = true)
+	public Page<MovieDTOByGenre> findAllMoviesByGenreId(Long genreId, Pageable pageable) {
+		Genre genre = (genreId == 0) ? null : genreRepository.getReferenceById(genreId);
+		Page<Movie> page = repository.findAllMoviesByGenreId(genre, pageable);
+		return page.map(x -> new MovieDTOByGenre(x));
 	}
 	
 	@Transactional(readOnly = true)
