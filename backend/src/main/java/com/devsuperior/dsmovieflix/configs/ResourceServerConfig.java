@@ -34,7 +34,8 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 	private Environment env;
 
 	// contantes de permissionamento
-	private static final String[] PUBLIC = { "/oauth/token", "/h2-console/**" };
+	private static final String[] PUBLIC = { "/oauth/token", "/h2-console/**", "/v2/api-docs", "/swagger-ui.html",
+			 								 "/swagger-resources/**", "/configuration/**", "/webjars/**" };
 
 	// metodos
 	@Override
@@ -82,4 +83,5 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 		bean.setOrder(Ordered.HIGHEST_PRECEDENCE);
 		return bean;
 	}
+	
 }
