@@ -1,24 +1,27 @@
-import './styles.scss'
+import { Movie } from 'core/types/movie';
+import './styles.scss';
 
-const MovieCard = () => {
+type Props = {
+  movie: Movie;
+};
+
+const MovieCard = ({ movie }: Props) => {
   return (
     <div className="movie-card-container">
       <img
-        src="Endereço da Imagem"
-        alt= "Título Alternativo"
+        src={movie.imgUrl}
+        alt={movie.title}
         className="movie-image"
         data-testid="movie-image"
       />
 
       <div className="movie-info-container">
-        <h3 className="movie-title">
-          Título do Filme
-        </h3>
-        <span className="movie-year">Ano do Filme</span>
-        <h4 className="movie-subtitle">SubTítulo do Filme</h4>
+        <h3 className="movie-title">{movie.title}</h3>
+        <span className="movie-year">{movie.year}</span>
+        <h4 className="movie-subtitle">{movie.subTitle}</h4>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default MovieCard
+export default MovieCard;
