@@ -1,6 +1,7 @@
 import { Movie } from 'core/types/movie';
 import MovieCard from './MovieCard';
 import './styles.scss';
+import { Link } from 'react-router-dom';
 
 const Movies = () => {
 
@@ -21,7 +22,9 @@ const Movies = () => {
 
   return (
     <div className="movies-container">
-      <MovieCard movie={movie} />
+      <Link to={ `/movies/1` }>
+        <MovieCard movie={movie} />
+      </Link>
       <MovieCard movie={movie} />
       <MovieCard movie={movie} />
       <MovieCard movie={movie} />
