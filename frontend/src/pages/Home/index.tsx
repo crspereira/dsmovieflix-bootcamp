@@ -1,7 +1,8 @@
-import { ReactComponent as MainImage } from 'core/assets/images/main-image.svg'
+import { ReactComponent as MainImage } from 'core/assets/images/main-image.svg';
 import Navbar from 'core/components/NavBar';
 
 import './styles.scss';
+import Auth from './Auth';
 
 const Home = () => {
   return (
@@ -16,6 +17,9 @@ const Home = () => {
           <div className="home-image-container">
             <MainImage />
           </div>
+        </div>
+        <div className="home-authcard-container">
+          <Auth />
         </div>
       </div>
     </>
