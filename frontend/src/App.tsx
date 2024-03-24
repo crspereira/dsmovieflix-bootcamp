@@ -1,12 +1,9 @@
-import Navbar from 'core/components/NavBar';
+import Home from 'pages/Home';
 import './App.scss';
 
 const App = () => {
   return (
-    <>
-      <Navbar />
-      <h1>Hello DS MovieFlix</h1>
-    </>
+      <Home />
   );
 };
 
