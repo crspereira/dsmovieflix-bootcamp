@@ -1,7 +1,7 @@
-import ContentLoader from "react-content-loader"
+import ContentLoader from "react-content-loader";
 
 const MovieCardLoader = () => {
-  const loaderQuantity = [0, 1]
+  const loaderQuantity = [0, 1];
 
   return (
     <>
@@ -18,7 +18,7 @@ const MovieCardLoader = () => {
         </ContentLoader>
       ))}
     </>
-  )
-}
+  );
+};
 
 export default MovieCardLoader

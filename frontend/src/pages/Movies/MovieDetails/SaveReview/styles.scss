@@ -14,7 +14,7 @@
   width: 100%;
   min-height: 75px;
   max-height: 200px;
-  border: 1px solid #E1E1E1;
+  border: 1px solid #e1e1e1;
   border-radius: 10px;
   padding: 10px 15px;
   font-weight: 400;
@@ -28,7 +28,7 @@
 }
 
 .new-review-text:focus {
-  box-shadow: 0 0 3pt 1pt #FFC700;
+  box-shadow: 0 0 3pt 1pt #ffc700;
 }
 
 .new-review-text::placeholder {
@@ -36,7 +36,8 @@
   opacity: 1; /* Firefox */
 }
 
-.new-review-text::-ms-input-placeholder { /* Microsoft Edge */
+.new-review-text::-ms-input-placeholder {
+  /* Microsoft Edge */
   color: var(--lightGray);
 }
 

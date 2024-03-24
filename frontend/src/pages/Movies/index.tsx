@@ -1,33 +1,66 @@
-import { Movie } from 'core/types/movie';
-import MovieCard from './MovieCard';
-import './styles.scss';
+import { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Filter from './Filter';
+import MovieCard from './MovieCard';
+import { Genre } from 'core/types/genre';
+import { MovieResponse } from 'core/types/movie';
+import { makePrivateRequest } from 'core/utils/requests';
+import Pagination from './Pagination';
+import MovieCardLoader from './MovieCardLoader';
+
+import './styles.scss';
 
 const Movies = () => {
+  const [moviesResponse, setMoviesResponse] = useState<MovieResponse>();
+  const [activePage, setActivePage] = useState(0);
+  const [genre, setGenre] = useState<Genre>();
+  const [isLoading, setIsLoading] = useState(true);
 
-  const movie: Movie = {
-    id: 1,
-    title: 'Bob Esponja',
-    subTitle: 'O Incrível Resgate',
-    year: 2020,
-    imgUrl:
-      'https://image.tmdb.org/t/p/w533_and_h300_bestv2/wu1uilmhM4TdluKi2ytfz8gidHf.jpg',
-    synopsis:
-      'Onde está Gary? Segundo Bob Esponja, Gary foi "caracolstrado" pelo temível Rei Poseidon e levado para a cidade perdida de Atlantic City. Junto a Patrick Estrela, ele sai em uma missão de resgate ao querido amigo, e nesta jornada os dois vão conhecer novos personagens e viver inimagináveis aventuras.',
-    genre: {
-      id: 1,
-      name: 'Comédia',
-    },
+  const getMovies = useCallback(() => {
+    const params = {
+      linesPerPage: 12,
+      genreId: genre?.id,
+      page: activePage,
+    };
+
+    makePrivateRequest({ url: '/movies', params }).then((response) => {
+      setMoviesResponse(response.data);
+      setIsLoading(false);
+    });
+  }, [activePage, genre?.id]);
+
+  useEffect(() => {
+    getMovies();
+  }, [getMovies]);
+
+  const handleChangeGenre = (genre: Genre) => {
+    setActivePage(0);
+    setGenre(genre);
   };
 
   return (
     <div className="movies-container">
-      <Link to={ `/movies/1` }>
-        <MovieCard movie={movie} />
-      </Link>
-      <MovieCard movie={movie} />
-      <MovieCard movie={movie} />
-      <MovieCard movie={movie} />
+      <Filter genre={genre} handleChangeGenre={handleChangeGenre} />
+
+      <div className="movie-content">
+        {isLoading ? (
+          <MovieCardLoader />
+        ) : (
+          moviesResponse?.content.map((movie) => (
+            <Link to={`/movies/${movie.id}`} key={movie.id}>
+              <MovieCard movie={movie} />
+            </Link>
+          ))
+        )}
+      </div>
+
+      {moviesResponse && (
+        <Pagination
+          totalPages={moviesResponse.totalPages}
+          activePage={activePage}
+          onChange={(page) => setActivePage(page)}
+        />
+      )}
     </div>
   );
 };

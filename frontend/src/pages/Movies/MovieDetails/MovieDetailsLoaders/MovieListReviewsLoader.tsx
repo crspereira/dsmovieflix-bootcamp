@@ -1,7 +1,7 @@
-import ContentLoader from "react-content-loader"
+import ContentLoader from 'react-content-loader';
 
 const MovieListReviewsLoader = () => (
-  <ContentLoader 
+  <ContentLoader
     speed={2}
     width={'100%'}
     height={'100%'}
@@ -11,6 +11,6 @@ const MovieListReviewsLoader = () => (
   >
     <rect x="0" y="0" rx="10" ry="10" width="1150" height="400" />
   </ContentLoader>
-)
+);
 
-export default MovieListReviewsLoader
+export default MovieListReviewsLoader;
