@@ -1,5 +1,5 @@
 import './styles.scss';
-import ButtonIcon from './ButtonIcon';
+import ButtonIcon from 'core/components/ButtonIcon';
 
 const Login = () => {
   return (

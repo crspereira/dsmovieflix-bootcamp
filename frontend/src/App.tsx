@@ -1,9 +1,9 @@
 import './App.scss';
-import Movies from 'pages/Movies';
+import Routes from 'Routes';
 
 const App = () => {
   return (
-      <Movies />
+      <Routes />
   );
 };
 
