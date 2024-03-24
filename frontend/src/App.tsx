@@ -1,9 +1,9 @@
-import Home from 'pages/Home';
 import './App.scss';
+import Movies from 'pages/Movies';
 
 const App = () => {
   return (
-      <Home />
+      <Movies />
   );
 };
 
