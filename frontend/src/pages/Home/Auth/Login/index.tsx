@@ -51,7 +51,7 @@ const Login = () => {
           <input
             {...register('password', { required: true })}
             type="password"
-            className="form-control form-control-lg base-input "
+            className="form-control form-control-lg base-input auth-input"
             placeholder="Password"
             name="password"
           />

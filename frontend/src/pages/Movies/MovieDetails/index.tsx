@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 
 import { Movie } from 'core/types/movie';
+import { Review } from 'core/types/review';
 import { getAccessTokenDecoded } from 'core/utils/auth';
 import { makePrivateRequest } from 'core/utils/requests';
 import ListReviews from './ListReviews';
@@ -19,6 +20,7 @@ type ParamsType = {
 const MovieDetails = () => {
   const { movieId } = useParams<ParamsType>();
   const [movie, setMovie] = useState<Movie>();
+  const [review, setReview] = useState<Review[]>();
   const [hasPermission, setHasPermission] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -26,6 +28,7 @@ const MovieDetails = () => {
     makePrivateRequest({ url: `/movies/${movieId}` })
       .then(response => {
         setMovie(response.data)
+        console.log(response.data)
         setIsLoading(false)
       });
   }, [movieId]);
@@ -36,6 +39,22 @@ const MovieDetails = () => {
 
     getMovies();
   }, [getMovies]);
+
+  const getReviews = useCallback(() => {
+    makePrivateRequest({ url: `/movies/${movieId}/reviews` })
+      .then(response => {
+        setReview(response.data)
+        console.log(response.data)
+        setIsLoading(false)
+      });
+  }, [movieId]);
+
+  useEffect(() => {
+    const currentUser = getAccessTokenDecoded();
+    setHasPermission(currentUser.authorities.toString() === 'ROLE_MEMBER');
+
+    getReviews();
+  }, [getReviews]);
 
   return (
     <div className="movie-details-container">
@@ -53,7 +72,9 @@ const MovieDetails = () => {
             <h3 className="movie-details-subtitle">{ movie?.subTitle }</h3>
             <div className="movie-details-description-container">
               <p className="movie-details-description-text">
+
                 { movie?.synopsis }
+                
               </p>
             </div>
           </div>
@@ -66,17 +87,15 @@ const MovieDetails = () => {
         <SaveReview movieId={ movieId } />
       )}
 
-{/*      {isLoading ? (
-        <MovieListReviewsLoader />
-      ) : (
-        movie?.reviews.length !== 0 && (
+     {isLoading ? (<MovieListReviewsLoader />) : ( 
+        review?.length !== 0 && (
           <div className="reviews-container">
-            {movie?.reviews.map(review => (
+            {review?.map(review => (
               <ListReviews review={ review } key={review.id} />
             ))}
           </div>
         )
-      )} */}
+      )};
     </div>
   );
 };

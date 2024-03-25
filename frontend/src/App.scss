@@ -57,3 +57,21 @@ p {
 .base-input::placeholder {
   color: var(--lightGray);
 }
+
+.auth-input {
+  background-color: #FEFEFE;
+  border: none;
+}
+
+.auth-input:focus {
+  box-shadow: 0 0 3pt 1pt #FFC700;
+}
+
+.auth-input::placeholder {
+  color: var(--lightGray);
+  opacity: 1; /* Firefox */
+}
+
+.auth-input::-ms-input-placeholder { /* Microsoft Edge */
+  color: var(--lightGray);
+}
