@@ -45,6 +45,7 @@ const Login = () => {
             className="form-control form-control-lg base-input auth-input"
             placeholder="Email"
             name="username"
+            data-testid="email"
           />
         </div>
         <div className="mb-2">
@@ -54,6 +55,7 @@ const Login = () => {
             className="form-control form-control-lg base-input auth-input"
             placeholder="Password"
             name="password"
+            data-testid="password"
           />
         </div>
         <div className="login-submit">

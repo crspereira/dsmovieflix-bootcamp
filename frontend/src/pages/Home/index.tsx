@@ -13,10 +13,10 @@ const Home = () => {
             <h2>Diga o que você achou do seu filme favorito</h2>
           </div>
           <div className="home-image-container">
-            <MainImage />
+            <MainImage data-testid="main-image"/>
           </div>
         </div>
-        <div className="home-authcard-container">
+        <div data-testid="auth" className="home-authcard-container">  
           <Auth />
         </div>
       </div>
