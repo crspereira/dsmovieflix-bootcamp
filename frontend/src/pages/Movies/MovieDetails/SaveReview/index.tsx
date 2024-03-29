@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import history from 'core/utils/history';
 import { makePrivateRequest } from 'core/utils/requests';
 
 import './styles.scss';
+import 'react-toastify/dist/ReactToastify.css';
 
 type Props = {
   movieId: string;
@@ -24,8 +25,9 @@ const SaveReview = ({ movieId }: Props) => {
       data: payload,
     })
       .then(() => {
-        history.push(`/movies`);
-        toast.success('Avaliação salva com sucesso 😄', { delay: 500 });
+        //history.push(`/movies`);
+        //history.push(`/movies/${movieId}`);
+        toast.success('Avaliação salva com sucesso 😄', {delay: 500, onClose: () => history.go(0)});
       })
       .catch(() => {
         toast.error('Ocorreu um erro ao salvar sua avaliação 😕');
@@ -50,6 +52,7 @@ const SaveReview = ({ movieId }: Props) => {
       <button className="new-review-button" onClick={saveReview}>
         <span className="new-review-button-text">Salvar avaliação</span>
       </button>
+      <ToastContainer />
     </div>
   );
 };

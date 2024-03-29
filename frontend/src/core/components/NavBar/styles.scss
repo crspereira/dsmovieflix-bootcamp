@@ -1,7 +1,7 @@
 .main-nav {
   height: 70px;
-  padding-left: 40px;
-  padding-right: 40px;
+  padding-left: 200px;
+  padding-right: 200px;
 }
 
 .navbar-logo,
@@ -33,6 +33,14 @@
   letter-spacing: -1.5%;
   text-transform: uppercase;
   color: #000000;
+}
+
+@media (max-width: 1440px) {
+  .main-nav {
+    height: 70px;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
 }
 
 @media (max-width: 576px) {
