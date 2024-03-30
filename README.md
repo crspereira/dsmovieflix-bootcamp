@@ -36,14 +36,14 @@ Você pode acessar a aplicação com os usuários:
 
 # Tecnologias utilizadas
 ## Backend
-- Java
-- Spring Boot
+- Java 17
+- Spring Boot 2.7.18 
 - JPA / Hibernate
 - Maven
 
 ## FrontEnd
 - HTML / CSS / TypeScript
-- ReactJS
+- ReactJS e Node 14.21.3
 
 ## Implantação em produção
 - Under Constructor
