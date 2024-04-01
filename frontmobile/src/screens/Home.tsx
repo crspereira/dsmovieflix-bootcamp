@@ -4,13 +4,14 @@ import { View, Text, StyleSheet, Image, ScrollView } from "react-native";
 import { useNavigation } from "@react-navigation/core";
 
 import Button from "../core/components/Button";
+import Login from "../screens/Login";
 
 import mainImage from "../core/assets/main-image.png";
 import colors from "../styles/colors";
 import fonts from "../styles/fonts";
 
 export default function Home() {
-  const navigation = useNavigation()
+  const navigation = useNavigation();
 
   return (
     <ScrollView contentContainerStyle={styles.container}>

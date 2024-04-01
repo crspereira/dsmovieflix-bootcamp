@@ -9,15 +9,15 @@ import { AuthContext } from './src/contexts/AuthContext';
 import { isAuthenticated } from './src/core/utils/auth';
 
 export default function App() {
-  //const [isUserLogged, setIsUserLogged] = useState(await setUserLogged() ? true : false)
+  const [isUserLogged, setIsUserLogged] = useState(setUserLogged() ? true : false)
 
   async function setUserLogged() {
     const isUserAuthenticated = await isAuthenticated()
 
-    /* if (isUserAuthenticated)
+    if (isUserAuthenticated)
       setIsUserLogged(true)
     else 
-      setIsUserLogged(false) */
+      setIsUserLogged(false)
   }
 
   const [ fontsLoaded ] = useFonts({

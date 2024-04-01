@@ -1,8 +1,8 @@
-import AsyncStorage from '@react-native-async-storage/async-storage'
-import jwtDecode from 'jwt-decode'
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import jwtDecode from 'jwt-decode';
 
-export const CLIENT_ID = process.env.CLIENT_ID ?? 'movieflix'
-export const CLIENT_SECRET = process.env.CLIENT_SECRET ?? 'movieflix123'
+export const CLIENT_ID = process.env.CLIENT_ID ?? 'myclientsecret'
+export const CLIENT_SECRET = process.env.CLIENT_SECRET ?? 'myclientsecret'
 
 type AccessToken = {
   exp: number // é o tempo de expiração
