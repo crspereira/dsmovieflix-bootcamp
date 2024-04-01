@@ -81,6 +81,21 @@ yarn install
 yarn start
 ```
 
+## Mobile
+```bash
+# clonar repositório
+git clone https://github.com/crspereira/dsmovieflix-bootcamp.git
+
+# entrar na pasta do projeto mobile
+cd mobile
+
+# instalar dependências
+npm install
+
+# executar o projeto
+expo start
+```
+
 # Autor
 
 Clayton Pereira

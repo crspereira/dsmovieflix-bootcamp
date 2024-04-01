@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { useFonts, OpenSans_400Regular, OpenSans_700Bold } from '@expo-google-fonts/open-sans';
-import AppLoading from 'expo-app-loading';
+import AppLoading from 'expo-splash-screen';
 
 import Routes from './src/routes';
 import { AuthContext } from './src/contexts/AuthContext';
