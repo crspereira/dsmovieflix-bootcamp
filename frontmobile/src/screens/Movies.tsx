@@ -29,7 +29,7 @@ export default function Movies() {
       setIsLoading(true)
 
     if (page > 0) {
-      setMovies(oldValue => [...oldValue, ...content])
+      setMovies(oldValue => [...[oldValue], ...content])
     } else {
       setMovies(content)
     }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet, Image, ScrollView } from "react-native";
 
-import { Movie } from "../core/types/Movie";
+import { Movie, Review } from "../core/types/Movie";
 import { makePrivateRequest } from "../core/utils/request";
 import ListReview from "./components/ListReview";
 
@@ -11,6 +11,7 @@ import SaveReview from "./components/SaveReview";
 
 export default function MovieDetails({ route: { params: {movieId} } }) {
   const [movie, setMovie] = useState<Movie>()
+  const [reviews, setReviews] = useState<Review[]>([])
 
   async function getMovie() {
     const response = await makePrivateRequest({ url: `/movies/${movieId}` })
@@ -19,7 +20,16 @@ export default function MovieDetails({ route: { params: {movieId} } }) {
 
   useEffect(() => {
     getMovie()
-  }, [movie?.reviews])
+  }, [movie])
+
+  async function getReviews() {
+    const response = await makePrivateRequest({ url: `/movies/${movieId}/reviews` })
+    setReviews(response.data)
+  }
+
+  useEffect(() => {
+    getReviews()
+  }, [reviews])
 
   return (
     <ScrollView
@@ -63,11 +73,11 @@ export default function MovieDetails({ route: { params: {movieId} } }) {
 
       <SaveReview movieId={ movieId } />
 
-      {movie?.reviews.length !== 0 && (
+      {reviews.length !== 0 && (
         <ScrollView style={ styles.listReviewContainer }>
           <Text style={ styles.listReviewContainerTitle }>Avaliações</Text>
 
-          {movie?.reviews.map(review => (
+          {reviews.map(review => (
             <ListReview key={ review.id } review={ review } />
           ))}
         </ScrollView>

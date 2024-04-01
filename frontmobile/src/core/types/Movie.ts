@@ -10,8 +10,9 @@ export type Movie = {
   year: number
   imgUrl: string
   synopsis: string
-  genreId: number
-  reviews: Review[]
+  genre: Genre
+  //genreId: number
+  //reviews: Review[]
 }
 
 export type Review = {

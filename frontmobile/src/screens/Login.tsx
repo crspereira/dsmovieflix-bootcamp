@@ -95,6 +95,7 @@ const styles = StyleSheet.create({
   title: {
     fontFamily: fonts.text,
     fontSize: 40,
+    textTransform: "uppercase",
     lineHeight: 41,
     letterSpacing: -0.015,
     color: colors.white,

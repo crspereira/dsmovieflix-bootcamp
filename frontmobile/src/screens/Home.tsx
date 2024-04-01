@@ -4,14 +4,13 @@ import { View, Text, StyleSheet, Image, ScrollView } from "react-native";
 import { useNavigation } from "@react-navigation/core";
 
 import Button from "../core/components/Button";
-import Login from "../screens/Login";
 
-import mainImage from "../core/assets/main-image.png";
+import mainImage from '../core/assets/main-image.png'
 import colors from "../styles/colors";
 import fonts from "../styles/fonts";
 
 export default function Home() {
-  const navigation = useNavigation();
+  const navigation = useNavigation()
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -47,7 +46,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 30,
-    paddingHorizontal: 40
+    paddingHorizontal: 40,
+    paddingBottom: 50
   },
 
   image: {
@@ -57,18 +57,18 @@ const styles = StyleSheet.create({
 
   title: {
     fontFamily: fonts.title,
-    fontSize: 26,
-    lineHeight: 35,
+    fontSize: 28,
+    lineHeight: 40,
     letterSpacing: -0.015,
     color: colors.white,
     textAlign: 'center',
     marginTop: 40,
-    marginBottom: 30
+    marginBottom: 15
   },
 
   subtitle: {
     fontFamily: fonts.text,
-    fontSize: 16,
+    fontSize: 19,
     lineHeight: 22,
     textAlign: 'center',
     letterSpacing: -0.015,

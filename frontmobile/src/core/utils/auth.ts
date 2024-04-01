@@ -1,5 +1,5 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import jwtDecode from 'jwt-decode';
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import jwtDecode from 'jwt-decode'
 
 export const CLIENT_ID = process.env.CLIENT_ID ?? 'myclientid'
 export const CLIENT_SECRET = process.env.CLIENT_SECRET ?? 'myclientsecret'
@@ -28,7 +28,7 @@ export async function logout() {
     AsyncStorage.removeItem('@myclientid:accessToken')
   }
   catch (e) {
-    console.log(e)
+    console.log(e + "ERROR!!")
   }
 }
 

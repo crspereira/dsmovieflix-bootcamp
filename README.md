@@ -41,9 +41,10 @@ Você pode acessar a aplicação com os usuários:
 - JPA / Hibernate
 - Maven
 
-## FrontEnd
+## FrontEnd e FrontMobile
 - HTML / CSS / TypeScript
-- ReactJS e Node 14.21.3
+- ReactJS e Node 16.20.2
+- EXPO 6.3.10 - sdk49
 
 ## Implantação em produção
 - Under Constructor
@@ -87,7 +88,7 @@ yarn start
 git clone https://github.com/crspereira/dsmovieflix-bootcamp.git
 
 # entrar na pasta do projeto mobile
-cd mobile
+cd frontmobile
 
 # instalar dependências
 npm install
