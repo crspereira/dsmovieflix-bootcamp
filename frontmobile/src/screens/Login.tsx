@@ -75,12 +75,6 @@ export default function Login() {
           />
         </View>
       </Button>
-
-      <View style={ styles.noAccountContainer }>
-        <Text style={ styles.noAccountTextLeft }>
-          Não tem conta?
-        </Text>
-      </View>
     </ScrollView>
   )
 }
@@ -94,17 +88,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     // paddingTop: 30,
-    // paddingBottom: 30,
+    paddingBottom: 100,
     paddingHorizontal: 40
   },
 
   title: {
     fontFamily: fonts.text,
-    fontSize: 30,
+    fontSize: 40,
     lineHeight: 41,
     letterSpacing: -0.015,
     color: colors.white,
-    marginBottom: 70,
+    marginBottom: 30,
     textAlign: 'center'
   },
 
@@ -128,7 +122,7 @@ const styles = StyleSheet.create({
     maxWidth: 335,
     flexDirection: 'row',
     alignItems: 'center',
-    marginVertical: 30
+    marginVertical: 30,
   },
 
   toggle: {
@@ -142,31 +136,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: colors.buttonImageContainer,
     borderTopEndRadius: 10,
-    borderBottomEndRadius: 10
+    borderBottomEndRadius: 10,
   },
 
   buttonImage: {
     fontSize: 28,
     color: colors.white
-  },
-
-  noAccountContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    marginTop: 30
-  },
-
-  noAccountTextLeft: {
-    fontFamily: fonts.title,
-    color: colors.whiteBackground,
-    fontSize: 16
-  },
-
-  noAccountTextRight: {
-    fontFamily: fonts.title,
-    color: colors.yellow,
-    fontSize: 16,
-    textTransform: 'uppercase',
-    marginLeft: 5
   }
 })

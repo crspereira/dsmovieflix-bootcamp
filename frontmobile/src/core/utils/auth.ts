@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import jwtDecode from 'jwt-decode';
 
-export const CLIENT_ID = process.env.CLIENT_ID ?? 'myclientsecret'
+export const CLIENT_ID = process.env.CLIENT_ID ?? 'myclientid'
 export const CLIENT_SECRET = process.env.CLIENT_SECRET ?? 'myclientsecret'
 
 type AccessToken = {
@@ -14,7 +14,7 @@ export type Role = 'ROLE_VISITOR' | 'ROLE_MEMBER'
 
 export async function isAuthenticated() {
   try {
-    const token = await AsyncStorage.getItem('@movieflix:accessToken')
+    const token = await AsyncStorage.getItem('@myclientid:accessToken')
 
     return token ? true : false
   }
@@ -25,7 +25,7 @@ export async function isAuthenticated() {
 
 export async function logout() {
   try {
-    AsyncStorage.removeItem('@movieflix:accessToken')
+    AsyncStorage.removeItem('@myclientid:accessToken')
   }
   catch (e) {
     console.log(e)
@@ -33,7 +33,7 @@ export async function logout() {
 }
 
 async function getAcessTokenDecoded() {
-  const accessToken = await AsyncStorage.getItem('@movieflix:accessToken') ?? ''
+  const accessToken = await AsyncStorage.getItem('@myclientid:accessToken') ?? ''
 
   try {
     const accessTokenDecoded = jwtDecode(accessToken)

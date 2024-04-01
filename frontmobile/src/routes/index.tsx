@@ -1,14 +1,13 @@
-import React, { useContext, useEffect } from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
+import React, { useContext, useEffect } from 'react'
+import { createStackNavigator } from '@react-navigation/stack'
 
-//import { Home, Login, MovieDetails, Movies } from '../screens';
-import Home from '../screens/Home';
-import HeaderLeft from '../core/components/HeaderLeft';
-import HeaderRight from '../core/components/HeaderRight';
+import { Home, Login, MovieDetails, Movies } from '../screens'
+import HeaderLeft from '../core/components/HeaderLeft'
+import HeaderRight from '../core/components/HeaderRight'
 
 import colors from '../styles/colors'
-import { AuthContext } from '../contexts/AuthContext';
-import { isAuthenticated } from '../core/utils/auth';
+import { AuthContext } from '../contexts/AuthContext'
+import { isAuthenticated } from '../core/utils/auth'
 
 const Stack = createStackNavigator()
 
@@ -27,7 +26,7 @@ export default function Routes() {
   return (
     <>
       {isUserLogged ? (
-        {/* <Stack.Navigator
+        <Stack.Navigator
           screenOptions={{
             headerTitle: '',
             headerStyle: { backgroundColor: colors.yellow },
@@ -44,7 +43,7 @@ export default function Routes() {
             name="MovieDetails"
             component={ MovieDetails }
           />
-        </Stack.Navigator> */}
+        </Stack.Navigator>
       ) : (
         <Stack.Navigator
           screenOptions={{
@@ -58,10 +57,10 @@ export default function Routes() {
             component={ Home }
           />
 
-          {/* <Stack.Screen
+          <Stack.Screen
             name="Login"
             component={ Login }
-          /> */}
+          />
         </Stack.Navigator>
       )}
     </>
